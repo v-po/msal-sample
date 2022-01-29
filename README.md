@@ -1,5 +1,6 @@
 # msal-sample
 
 ## Usage
-- replace `YOUR_APP_SIGNATURE_HASH` in `AndroidManifest.xml` with your own
-- replace `YOUR_CLIENT_ID` and `YOUR_REDIRECT_URI` in `msal_config.json` with your own
+- replace `<YOUR_BASE64_ENCODED_PACKAGE_SIGNATURE>` in `AndroidManifest.xml` and in `msal_config.json`
+with your own
+- replace `<YOUR_CLIENT_ID>` in `msal_config.json` with your own

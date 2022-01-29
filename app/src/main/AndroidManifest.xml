@@ -30,7 +30,7 @@
 
                 <data
                     android:host="${applicationId}"
-                    android:path="/YOUR_APP_SIGNATURE_HASH"
+                    android:path="/<YOUR_BASE64_ENCODED_PACKAGE_SIGNATURE>"
                     android:scheme="msauth" />
             </intent-filter>
         </activity>

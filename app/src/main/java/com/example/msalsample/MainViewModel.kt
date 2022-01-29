@@ -26,7 +26,6 @@ interface MainViewModel {
 }
 
 @HiltViewModel
-@JvmSuppressWildcards
 class MainViewModelDefault @Inject constructor(
     private val authHelper: AuthHelper
 ) : ViewModel(), MainViewModel {
@@ -62,6 +61,7 @@ class MainViewModelDefault @Inject constructor(
     }
 
     override fun onSignOutClicked() {
+        viewState.value = MainViewModel.ViewState.Loading
         viewModelScope.launch {
             authHelper.signOut().fold(
                 onSuccess = {
