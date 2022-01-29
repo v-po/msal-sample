@@ -25,9 +25,7 @@ class AuthHelper(
 
     private val pca: ISingleAccountPublicClientApplication
 
-    private var startedActivities = ArrayList<String>()
     private var currentActivity: Activity? = null
-    private var isActivityResumed = false
 
     init {
         pca = HackySingleAccountPublicClientApplication(
@@ -111,28 +109,21 @@ class AuthHelper(
     }
 
     override fun onActivityStarted(activity: Activity) {
-        startedActivities.add(activity.localClassName)
         currentActivity = activity
         log(activity, "Started")
     }
 
     override fun onActivityResumed(activity: Activity) {
         currentActivity = activity
-        isActivityResumed = true
         log(activity, "Resumed")
     }
 
     override fun onActivityPaused(activity: Activity) {
-        isActivityResumed = false
-        log(activity, "SaveInstanceState")
+        log(activity, "Paused")
     }
 
     override fun onActivityStopped(activity: Activity) {
-        startedActivities.remove(activity.localClassName)
         log(activity, "Stopped")
-        if (startedActivities.isEmpty()) {
-            // all activities are stopped
-        }
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, savedInstanceState: Bundle) {
